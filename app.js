@@ -94,32 +94,7 @@ function deski(m, km, M, KM) {
   return arr;
 }
 
-// Funkcija, ki na <canvas> nariše prerez
-function narisi(deske, r) {
-  const cv = document.getElementById('graf');
-  const ctx= cv.getContext('2d');
-  ctx.clearRect(0,0,cv.width,cv.height);
 
-  ctx.save();
-  ctx.translate(cv.width/2, cv.height/2);
-  const scale = cv.width / (2 * r + 10);
-  ctx.scale(scale, -scale);
-
-  //  ➜ izračunamo skupno širino desk+rezov
-  const skupna = deske.reduce((sum, [_, w]) => sum + w, 0);
-  //  ➜ začnemo risati deske od -skupna/2
-  let x = -skupna / 2;
-
-  // naris kroga
-  ctx.beginPath();
-  ctx.arc(0, 0, r, 0, 2 * Math.PI);
-  ctx.stroke();
-
-  // naris desk
-  for (let [tip, w] of deske) {
-    if (tip === 'rez') { x += w; continue; }
-    // ... (ostanek kode nespremenjen)
-  }
 
   ctx.restore();
 }
