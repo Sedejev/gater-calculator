@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="sl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="manifest" href="manifest.json">
+  <title>Gater kalkulator</title>
+  <style>
+    body { font-family: sans-serif; padding: 1rem; }
+    label { display: block; margin: .5rem 0; }
+    input { width: 4rem; }
+    button { margin-top: .5rem; }
+    pre { background:#f5f5f5; padding:.5rem; white-space: pre-wrap; }
+    canvas { border:1px solid #ccc; margin-top:1rem; }
+  </style>
+</head>
+<body>
+  <h1>Gater kalkulator</h1>
+  <form id="gaterForm">
+    <label>Stranska mera (mm): <input id="mala" type="number" required></label>
+    <label>Št. stranskih desk: <input id="km" type="number" required></label>
+    <label>Osrednja mera (mm): <input id="velika" type="number" required></label>
+    <label>Št. osrednjih desk: <input id="KM" type="number" required></label>
+    <label>Premer hloda (cm): <input id="premer" type="number" required></label>
+    <button type="submit">Izračunaj</button>
+  </form>
+
+  <pre id="rezultat"></pre>
+  <canvas id="graf" width="300" height="300"></canvas>
+
+  <script src="app.js"></script>
+  <script>
+    // registracija service workerja
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js');
+    }
+  </script>
+</body>
+</html>
